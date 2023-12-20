@@ -75,6 +75,11 @@ class _SignUpFormState extends State<SignUpForm> {
 
   }
 
+  bool validate(TextEditingController firstName, TextEditingController lastName, TextEditingController userName) {
+    return (firstName.text.length > 1 && lastName.text.length > 1 && userName.text.length > 1);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -119,9 +124,12 @@ class _SignUpFormState extends State<SignUpForm> {
                     : Colors.blue;
               }),
             ),
-            onPressed:  _formProgress == 1
-                          ?_showWelcomeScreen
-                          : null,
+            onPressed:  () => {
+              print(validate(_firstNameTextController, _lastNameTextController, _usernameTextController )),
+              if(validate(_firstNameTextController, _lastNameTextController, _usernameTextController )) {
+                _showWelcomeScreen()
+              } //(_formProgress == 1) ?_showWelcomeScreen : null,
+            },
             child: const Text('Sign up'),
           ),
         ],
