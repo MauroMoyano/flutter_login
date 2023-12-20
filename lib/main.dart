@@ -47,6 +47,8 @@ class _SignUpFormState extends State<SignUpForm> {
   final _lastNameTextController = TextEditingController();
   final _usernameTextController = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   double _formProgress = 0;
 
   void _showWelcomeScreen() {
@@ -76,6 +78,7 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       onChanged: _updateFormProgress,
       child: Column(
         mainAxisSize: MainAxisSize.min,
